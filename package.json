@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "clean-and": "cd android && gradlew.bat clean && cd .. && react-native run-android",
+    "reverse": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9090 tcp:9090",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",

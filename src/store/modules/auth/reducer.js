@@ -3,7 +3,8 @@ import produce from 'immer'
 const INITIAL_STATE = {
   token: null,
   signed: false,
-  loading: false
+  loading: false,
+  user: null
 }
 export default function auth (state = INITIAL_STATE, action) {
   return produce(state, draft => {
@@ -12,6 +13,7 @@ export default function auth (state = INITIAL_STATE, action) {
         draft.token = action.payload.token
         draft.signed = true
         draft.loading = false
+        draft.user = action.payload.user
         break;
       }
       case '@auth/SIGN_IN_REQUEST': {

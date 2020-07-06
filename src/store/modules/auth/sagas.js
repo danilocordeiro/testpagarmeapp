@@ -13,10 +13,10 @@ export function * signIn ({ payload }) {
       password,
       password_confirmation
     })
-    const { token, usuario } = response.data
-    AsyncStorage.setItem('user', JSON.stringify({ usuario, token }))
+    const { token, user } = response.data
+    AsyncStorage.setItem('user', JSON.stringify({ user, token }))
     api.defaults.headers.Authorization = `Bearer ${token}`
-    yield put(signInSuccess(token, usuario))
+    yield put(signInSuccess(token, user))
   } catch (e) {
     Alert.alert('Error', 'Login failed, check email or password')
     yield put(signFailure())
@@ -44,10 +44,10 @@ export function * signUp ({ payload }) {
         password,
         password_confirmation
       })
-      const { token, usuario } = responseSign.data
-      AsyncStorage.setItem('user', JSON.stringify({ usuario, token }))
+      const { token, user } = responseSign.data
+      AsyncStorage.setItem('user', JSON.stringify({ user, token }))
       api.defaults.headers.Authorization = `Bearer ${token}`
-      yield put(signInSuccess(token, usuario))
+      yield put(signInSuccess(token, user))
     } else {
       Alert.alert('Error', 'Invalid data')
       yield put(signFailure())

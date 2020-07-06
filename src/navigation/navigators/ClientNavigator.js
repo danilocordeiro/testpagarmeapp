@@ -24,7 +24,7 @@ export default createAppContainer(
       Profile: {
         screen: Profile,
         navigationOptions: ({ navigation }) => ({
-          drawerLabel: 'My Profile - Client'
+          drawerLabel: 'My Profile'
         })
       }
     },

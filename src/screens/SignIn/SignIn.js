@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Background from '../../components/Background/Background'
-import { signInRequest } from '../../appStore/appModules/auth/actions'
+import { signInRequest } from '../../store/modules/auth/actions'
 import {
   Container,
   Form,

@@ -1,19 +1,19 @@
-import React, {  useRef, useState } from 'react'
-import {  ScrollView, Text } from 'react-native'
-import {  useDispatch, useSelector } from 'react-redux'
-import {  Formik } from 'formik'
-import * as Yup from 'yup'
-import {  signUpRequest } from '../../store/modules/auth/action'
-import Background from '../../components/Background/Background'
-import {  colors } from '../../utils/colors'
+import React, {useRef, useState} from 'react';
+import {ScrollView, Text} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+import {signUpRequest} from '../../store/modules/auth/actions';
+import Background from '../../components/Background/Background';
+import {colors} from '../../utils/colors';
 import {
   Container,
   FormInput,
   Form,
   SubmitButton,
   SignLinkText,
-  SignLink
-} from './styles'
+  SignLink,
+} from './styles';
 
 const formSchema = Yup.object().shape({
   email: Yup.string().trim().email('Invalid e-mail').required('Required'),
@@ -23,43 +23,45 @@ const formSchema = Yup.object().shape({
     .trim()
     .required('Required')
     .test('password-match', 'The passwords must be e equal', function (value) {
-      return this.parent.password === value
-    })
-})
+      return this.parent.password === value;
+    }),
+});
 
-export default function SignUp  ( { navigation }) {
-  const dispatch = useDispatch()
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmationRef = useRef()
-  const [type, setType] = useState('client')
-  const loading = useSelector(state => state.auth.loading)
+export default function SignUp({navigation}) {
+  const dispatch = useDispatch();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmationRef = useRef();
+  const [type, setType] = useState('client');
+  const loading = useSelector(state => state.auth.loading);
 
   const initialValues = {
     email: '',
     password: '',
     name: '',
-    password_confirmation: ''
-  }
+    password_confirmation: '',
+  };
   const onSubmit = values => {
-    const {  email, name, password, password_confirmation } = values
-    dispatch(signUpRequest({  email, name, password, password_confirmation, type })
-  }
+    const {email, name, password, password_confirmation} = values;
+    dispatch(
+      signUpRequest({email, name, password, password_confirmation, type}),
+    );
+  };
 
   return (
     <Background>
       <ScrollView>
         <Container>
           <Formik initialValues={initialValues} validationSchema={formSchema}>
-            {({  values, handleChange, setFieldTouched, touched, errors }) => (
+            {({values, handleChange, setFieldTouched, touched, errors}) => (
               <Form>
                 <FormInput
-                  icon='person-outline'
+                  icon="person-outline"
                   autoCorrect
-                  autoCapitalize='none'
-                  placeholder='Your name'
-                  name='name'
-                  returnKeyType='next'
+                  autoCapitalize="none"
+                  placeholder="Your name"
+                  name="name"
+                  returnKeyType="next"
                   value={values.nome}
                   onBlur={() => setFieldTouched('name')}
                   onChangeText={handleChange('name')}
@@ -70,22 +72,20 @@ export default function SignUp  ( { navigation }) {
                     style={{
                       fontSize: 12,
                       marginBottom: 10,
-                      color: colors.red
-                    }}
-
-                  >
+                      color: colors.red,
+                    }}>
                     {errors.name}
                   </Text>
                 )}
-                <FormInut
-                  icon='mail-outline'
-                  keyboardType='email-address'
+                <FormInput
+                  icon="mail-outline"
+                  keyboardType="email-address"
                   autoCorrect={false}
-                  autoCapitalize='none'
-                  placeholder='Your email'
-                  name='email'
+                  autoCapitalize="none"
+                  placeholder="Your email"
+                  name="email"
                   ref={emailRef}
-                  returnKeyType='next'
+                  returnKeyType="next"
                   value={values.email}
                   onBlur={() => setFieldTouched('email')}
                   onChangeText={handleChange('email')}
@@ -96,46 +96,46 @@ export default function SignUp  ( { navigation }) {
                     style={{
                       fontSize: 12,
                       marginBottom: 10,
-                      color: colors.red
-                    }}
-                  >
+                      color: colors.red,
+                    }}>
                     {errors.email}
                   </Text>
                 )}
                 <FormInput
-                  icon='lock-outline'
+                  icon="lock-outline"
                   secureTextEntry
-                  autoCorrect='false}'
-                  autoCapitalize='none'
-                  placeholder='Your password'
-                  name='password'
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  placeholder="Your password"
+                  name="password"
                   ref={passwordRef}
-                  returnKeyType='next'
+                  returnKeyType="next"
                   value={values.password}
                   onBlur={() => setFieldTouched('password')}
-                  onChangeText={handleChange('password')}onSubmitEditing={() =>
-                    passwordConfirmationRef.current.focus()}
+                  onChangeText={handleChange('password')}
+                  onSubmitEditing={() =>
+                    passwordConfirmationRef.current.focus()
+                  }
                 />
                 {touched.password && errors.password && (
                   <Text
                     style={{
                       fontSize: 12,
                       marginBottom: 10,
-                      color: colors.red
-                    }}
-                  >
+                      color: colors.red,
+                    }}>
                     {errors.password}
                   </Text>
                 )}
                 <FormInput
-                  icon='lock-outline'
+                  icon="lock-outline"
                   secureTextEntry
                   autoCorrect={false}
-                  autoCapitalize='none'
-                  placeholder='Your password confirmation'
-                  name='password_confirmation'
+                  autoCapitalize="none"
+                  placeholder="Your password confirmation"
+                  name="password_confirmation"
                   ref={passwordConfirmationRef}
-                  returnKeyType='send'
+                  returnKeyType="send"
                   value={values.password_confirmation}
                   onBlur={() => setFieldTouched('password_confirmation')}
                   onChangeText={handleChange('password_confirmation')}
@@ -146,17 +146,15 @@ export default function SignUp  ( { navigation }) {
                     style={{
                       fontSize: 12,
                       marginBottom: 10,
-                      color: colors.red
-                    }}
-                  >
+                      color: colors.red,
+                    }}>
                     {errors.password_confirmation}
                   </Text>
                 )}
 
                 <SubmitButton
                   loading={loading}
-                  onPress={() => onSubmit(values)}
-                >
+                  onPress={() => onSubmit(values)}>
                   Sign Up
                 </SubmitButton>
               </Form>
@@ -164,9 +162,9 @@ export default function SignUp  ( { navigation }) {
           </Formik>
           <SignLink onPress={() => navigation.navigate('SignIn')}>
             <SignLinkText>Already registered? Enter here</SignLinkText>
-         </SignLink>
+          </SignLink>
         </Container>
       </ScrollView>
     </Background>
-  )
+  );
 }

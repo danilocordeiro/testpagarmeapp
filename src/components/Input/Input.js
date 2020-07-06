@@ -4,12 +4,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import PropTypes from 'prop-types'
 import { TextInputMask } from 'react-native-masked-text'
 import { Container } from './styles'
-import { appColors } from '../../utils/appColors'
+import { colors } from '../../utils/colors'
 
 function Input ({ style, typeMask, typeInput, icon, ...rest }, ref) {
   return (
     <Container style={style}>
-      {icon && <Icon name={icon} size={20} color={appColors.black} />}
+      {icon && <Icon name={icon} size={20} color={colors.black} />}
       {typeInput === 'mask' && typeMask === 'phone' ? (
         <TextInputMask
           {...rest}
@@ -35,7 +35,7 @@ function Input ({ style, typeMask, typeInput, icon, ...rest }, ref) {
       ) : (
         <TextInput
           style={{ flex: 1, fontSize: 15, marginLeft: 10, color: '#333' }}
-          placeholderTextColor={appColors.black}
+          placeholderTextColor={colors.black}
           {...rest}
           ref={ref}
         />

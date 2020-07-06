@@ -19,7 +19,7 @@ module.exports = {
   plugins: ['react', 'prettier', 'import', 'react-hooks', 'jsx-a11y'],
   rules: {
     'prettier/prettier': 'error',
-    'react/jsx-filename-extension': ['warn', {extension: ['.jsx', '.js']}],
+    'react/jsx-filename-extension': ['warn', {extensions: ['.jsx', '.js']}],
     'import/prefer-default-export': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
