@@ -59,7 +59,7 @@ export default function Profile ({ navigation }) {
       })
     )
     // r}
-  };
+  }
   return (
     <Background>
       <Container>
@@ -153,8 +153,8 @@ export default function Profile ({ navigation }) {
               {touched.password_confirmation &&
                 errors.password_confirmation && (
                 <Text style={{ fontSize: 12, marginBottom: 10, color: 'red' }}>
-                  {errors.password_confirmation}
-                </Text>
+                    {errors.password_confirmation}
+                  </Text>
               )}
               <SubmitButton
                 loading={loading}

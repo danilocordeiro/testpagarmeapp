@@ -13,14 +13,18 @@ import PaymentAddress from '../../screens/Payment/PaymentAddress/PaymentAddress'
 import PaymentCart from '../../screens/Payment/PaymentCart/PaymentCart'
 import CompleteRegister from '../../screens/Payment/CompleteRegister/CompleteRegister'
 import { colors } from '../../utils/colors'
+import Plans from '../../screens/Payment/Plans/Plans'
+import CheckoutEasy from '../../screens/Payment/CheckoutEasy/CheckoutEasy'
+import CardList from '../../screens/Payment/CardList/CardList'
 import { signOut } from '../../store/modules/auth/actions'
+import Background from '../../components/Background/Background'
 
 function Logout () {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(signOut())
-  }, [])
-  return <></>
+  }, [dispatch])
+  return <Background />
 }
 
 const RootStack = createDrawerNavigator(
@@ -35,19 +39,49 @@ const RootStack = createDrawerNavigator(
         drawerLabel: 'My Profile'
       })
     },
-    CompleteRegister: {
-      screen: createStackNavigator({
-        CompleteRegister,
-        PaymentAddress,
-        PaymentCart
-      }),
+    CompleteReg: {
+      screen: createStackNavigator(
+        {
+          CompleteRegister,
+          RegPaymentAddress: { screen: PaymentAddress },
+          RegPaymentCart: { screen: PaymentCart },
+          RegPlans: { screen: Plans }
+        },
+        {
+          initialRouteName: 'CompleteRegister',
+          defaultNavigationOptions: {
+            headerTransparent: true,
+            headerTintColor: colors.white,
+            headerLeftContainerStyle: {
+              marginLeft: 0
+            }
+          }
+        }
+      ),
       navigationOptions: () => ({ drawerLabel: 'Complete Register' })
     },
     Payment: {
-      screen: createStackNavigator({
-        PaymentAddress,
-        PaymentCart
-      }),
+      screen: createStackNavigator(
+        {
+          CardList,
+          PaymentAddress,
+          PaymentCart,
+          CheckoutEasy,
+          Plans
+        },
+        {
+          initialRouteName: 'CardList',
+
+          defaultNavigationOptions: {
+            headerTransparent: true,
+
+            headerTintColor: colors.white,
+            headerLeftContainerStyle: {
+              marginLeft: 0
+            }
+          }
+        }
+      ),
       navigationOptions: () => ({ drawerLabel: 'Payment' })
     },
     Logout: {
