@@ -1886,6 +1886,13 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
+cep-promise@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/cep-promise/-/cep-promise-3.0.9.tgz#3f10811277406db31a835c760f86b43cb31cf089"
+  integrity sha512-Jr2eFFlNxdz7E8asz/uEEevxwkZfyL/asBBrZeNb0lp2LsgG0Aqgpathc9RuJGjQgPt+ifEVXbSYIZie1rXKyA==
+  dependencies:
+    isomorphic-unfetch "2.0.0"
+
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -3769,6 +3776,14 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
+isomorphic-unfetch@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-2.0.0.tgz#f50140a4c163d7582b5f37f1591968c4f809a645"
+  integrity sha1-9QFApMFj11grXzfxWRloxPgJpkU=
+  dependencies:
+    node-fetch "^1.7.1"
+    unfetch "^3.0.0"
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -4946,7 +4961,7 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-node-fetch@^1.0.1:
+node-fetch@^1.0.1, node-fetch@^1.7.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   integrity sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
@@ -5334,11 +5349,6 @@ path-to-regexp@^1.8.0:
   dependencies:
     isarray "0.0.1"
 
-path-to-regexp@^3.0.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.2.0.tgz#fa7877ecbc495c601907562222453c43cc204a5f"
-  integrity sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==
-
 path-type@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-2.0.0.tgz#f012ccb8415b7096fc2daa1054c3d72389594c73"
@@ -5681,17 +5691,6 @@ react-native-screens@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.9.0.tgz#ead2843107ba00fee259aa377582e457c74f1f3b"
   integrity sha512-5MaiUD6HA3nzY3JbVI8l3V7pKedtxQF3d8qktTVI0WmWXTI4QzqOU8r8fPVvfKo3MhOXwhWBjr+kQ7DZaIQQeg==
-
-react-native-stack@^1.0.0-alpha11:
-  version "1.0.0-alpha11"
-  resolved "https://registry.yarnpkg.com/react-native-stack/-/react-native-stack-1.0.0-alpha11.tgz#a932a9f1422dfc1aa416526b1ad4fba3ae2edc76"
-  integrity sha512-VlJmPjeifc0G3uSV+RGs6nqcyhyiEhI7BqInCIwXU+ptceQAhwseJoHrS1sqggoUmnRij4S/Lzj6KfpIhcvy3A==
-  dependencies:
-    fbjs "^1.0.0"
-    hoist-non-react-statics "^3.3.0"
-    path-to-regexp "^3.0.0"
-    tiny-invariant "^1.0.4"
-    tiny-warning "^1.0.2"
 
 react-native-vector-icons@^7.0.0:
   version "7.0.0"
@@ -6773,11 +6772,6 @@ time-stamp@^1.0.0:
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
   integrity sha1-dkpaEa9QVhkhsTPztE5hhofg9cM=
 
-tiny-invariant@^1.0.4:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
-  integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
-
 tiny-warning@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
@@ -6954,6 +6948,11 @@ ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
   integrity sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=
+
+unfetch@^3.0.0:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-3.1.2.tgz#dc271ef77a2800768f7b459673c5604b5101ef77"
+  integrity sha512-L0qrK7ZeAudGiKYw6nzFjnJ2D5WHblUBwmHIqtPS6oKUd+Hcpk7/hKsSmcHsTlpd1TbTNsiRBUKRq3bHLNIqIw==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
