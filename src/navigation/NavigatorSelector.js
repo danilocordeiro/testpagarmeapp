@@ -9,6 +9,6 @@ const NavigatorSelector = () => {
     return <AdminNavigator />
   }
   return <ClientNavigator />
-};
+}
 
 export default NavigatorSelector

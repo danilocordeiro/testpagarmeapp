@@ -58,7 +58,7 @@ export default function Profile ({ navigation }) {
         _id: profile._id
       })
     )
-    //r}
+    // r}
   };
   return (
     <Background>

@@ -11,28 +11,28 @@ export default function user (state = INITIAL_STATE, action) {
       case '@auth/SIGN_IN_SUCCESS': {
         draft.loading = false
         draft.profile = action.payload.user
-        break;
+        break
       }
       case '@user/UPDATE_PROFILE_SUCCESS': {
         draft.loading = false
         draft.profile = action.payload.profile
-        break;
+        break
       }
       case '@user/UPDATE_PROFILE_REQUEST': {
         draft.loading = true
-        break;
+        break
       }
       case '@user/COMPLETE_PROFILE_REQUEST': {
         draft.loading = true
-        break;
+        break
       }
       case '@user/UPDATE_PROFILE_FAILURE': {
         draft.loading = false
-        break;
+        break
       }
       case '@auth/SIGN_OUT': {
         draft.profile = null
-        break;
+        break
       }
       default:
     }
