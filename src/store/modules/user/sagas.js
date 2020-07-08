@@ -43,4 +43,32 @@ export function * updateProfile ({ payload }) {
   }
 }
 
-export default all([takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile)])
+export function * completeProfile ({ payload }) {
+  try {
+    const { cpf, phone } = payload.data
+    const profile = {
+      cpf,
+      phone
+    }
+    const response = yield call(api.put, 'user/complete-register', profile)
+    if (response.data.message) {
+      Alert.alert('Erro', response.data.message)
+      yield put(updateProfileFailure())
+    } else if (response.data) {
+      Alert.alert('Sucesso', 'Profile successfully updated')
+      yield put(updateProfileSuccess(response.data))
+    } else {
+      Alert.alert('Erro', 'Check your data')
+      yield put(updateProfileFailure())
+    }
+  } catch (err) {
+    console.tron.log(err)
+    Alert.alert('Erro', 'Check your data')
+    yield put(updateProfileFailure())
+  }
+}
+
+export default all([
+  takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile),
+  takeLatest('@user/COMPLETE_PROFILE_REQUEST', completeProfile)
+])

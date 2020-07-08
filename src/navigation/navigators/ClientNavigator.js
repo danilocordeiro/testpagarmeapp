@@ -8,6 +8,10 @@ import metrics from '../../utils/metrics'
 import LinearGradient from 'react-native-linear-gradient'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import Profile from '../../screens/Profile/Profile'
+import Home from '../../screens/Home/Home'
+import PaymentAddress from '../../screens/Payment/PaymentAddress/PaymentAddress'
+import PaymentCart from '../../screens/Payment/PaymentCart/PaymentCart'
+import CompleteRegister from '../../screens/Payment/CompleteRegister/CompleteRegister'
 import { colors } from '../../utils/colors'
 import { signOut } from '../../store/modules/auth/actions'
 
@@ -19,25 +23,32 @@ function Logout () {
   return <></>
 }
 
-const drawerButton = navigation => (
-  <Icon
-    style={{ padding: 10, color: colors.white }}
-    name='three-bars'
-    size={30}
-    color={colors.black}
-    onPress={() => {
-      navigation.toggleDrawer()
-    }}
-  />
-)
-
 const RootStack = createDrawerNavigator(
   {
+    Home: {
+      screen: Home,
+      navigationOptions: () => ({ drawerLabel: 'Home' })
+    },
     Profile: {
       screen: Profile,
       navigationOptions: () => ({
         drawerLabel: 'My Profile'
       })
+    },
+    CompleteRegister: {
+      screen: createStackNavigator({
+        CompleteRegister,
+        PaymentAddress,
+        PaymentCart
+      }),
+      navigationOptions: () => ({ drawerLabel: 'Complete Register' })
+    },
+    Payment: {
+      screen: createStackNavigator({
+        PaymentAddress,
+        PaymentCart
+      }),
+      navigationOptions: () => ({ drawerLabel: 'Payment' })
     },
     Logout: {
       screen: Logout,
