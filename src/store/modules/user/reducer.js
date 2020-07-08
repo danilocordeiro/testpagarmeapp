@@ -13,6 +13,19 @@ export default function user (state = INITIAL_STATE, action) {
         draft.profile = action.payload.user
         break;
       }
+      case '@user/UPDATE_PROFILE_SUCCESS': {
+        draft.loading = false
+        draft.profile = action.payload.profile
+        break;
+      }
+      case '@user/UPDATE_PROFILE_REQUEST': {
+        draft.loading = true
+        break;
+      }
+      case '@user/COMPLETE_PROFILE_REQUEST': {
+        draft.loading = true
+        break;
+      }
       case '@user/UPDATE_PROFILE_FAILURE': {
         draft.loading = false
         break;
