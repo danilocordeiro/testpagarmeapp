@@ -55,7 +55,6 @@ export function * completeProfile ({ payload }) {
       Alert.alert('Erro', response.data.message)
       yield put(updateProfileFailure())
     } else if (response.data) {
-      Alert.alert('Sucesso', 'Profile successfully updated')
       yield put(updateProfileSuccess(response.data))
     } else {
       Alert.alert('Erro', 'Check your data')

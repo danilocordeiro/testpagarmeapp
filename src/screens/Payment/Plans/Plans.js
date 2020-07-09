@@ -68,7 +68,7 @@ export default function Plans ({ navigation }) {
         servicePrice={item.servicePrice}
       />
     )
-  };
+  }
   const itemWidth = metrics.DEVICE_WIDTH - 85
 
   return (
